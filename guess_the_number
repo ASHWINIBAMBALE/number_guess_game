@@ -1,0 +1,43 @@
+logo = """
+  / _ \_   _  ___  ___ ___  /__   \ |__   ___    /\ \ \_   _ _ __ ___ | |__   ___ _ __ 
+ / /_\/ | | |/ _ \/ __/ __|   / /\/ '_ \ / _ \  /  \/ / | | | '_ ` _ \| '_ \ / _ \ '__|
+/ /_\\| |_| |  __/\__ \__ \  / /  | | | |  __/ / /\  /| |_| | | | | | | |_) |  __/ |   
+\____/ \__,_|\___||___/___/  \/   |_| |_|\___| \_\ \/  \__,_|_| |_| |_|_.__/ \___|_|  
+"""
+EASY_LEVEL_TURNS=10
+DIFFCAULT_LEVEL_TURNS=5
+import random
+def checker(guess,actual_number,turns):
+  if guess > actual_number :
+    print("To high")
+    return turns -1
+  elif  guess <actual_number:
+    print("tO Low")
+    return turns -1
+  else :
+    print(" You win 🤩🤩🤩🤩🤩🤩🤩")
+def difficulty():
+  level=input("Choose a difficulaty: hard or easy:")
+  if level=="easy":
+    return EASY_LEVEL_TURNS
+  if level=="hard":
+    return DIFFCAULT_LEVEL_TURNS
+  else:
+    print("Check correct level: ")
+def game():
+    print(logo)
+    actual_number=random.randint(0,100)
+    print("Guess a number between 0 to 100:")
+    turns=difficulty()
+    
+    guess=0
+    while guess!=actual_number:
+      print(f"You have only {turns}")
+      guess=int(input("Enter the number:"))
+      turns= checker(guess,actual_number,turns)
+      if turns == 0:
+        print("You've run out of guesses, you lose.🤔🤔")
+        return
+      elif guess != actual_number:
+         print("Guess again.")
+game()
